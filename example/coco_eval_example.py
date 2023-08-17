@@ -1,8 +1,8 @@
 from pycocotools.coco import COCO
-from pycocoevalcap.eval import COCOEvalCap
+from Utils.eval import COCOEvalCap
 
 annotation_file = 'captions_val2014.json'
-results_file = 'captions_val2014_fakecap_results.json'
+results_file = 'evaluation_1epoch.json'
 
 # create coco object and coco_result object
 coco = COCO(annotation_file)
