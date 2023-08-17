@@ -1,5 +1,9 @@
-Microsoft COCO Caption Evaluation
-===================
+Image Captioning Evaluation
+==========================
+
+This repository has been forked from the [pycocoevalcap](https://github.com/salaniz/pycocoevalcap) repository. The developed scripts added to this initial repository are `metrics_compute.py` and `visualize_captions.py`. To use these, you need to add a 'res_file' folder with all the JSON results files inside organised by foler. 
+For instance if you used a captioning model with 1 Cross-Attention layer trained on 3 epochs, you need to add a 'res_files/1ca_ep3' folder and add the JSON file inside.
+
 
 Evaluation codes for MS COCO caption generation.
 
@@ -13,29 +17,15 @@ Caption evaluation depends on the COCO API that natively supports Python 3.
 - Java 1.8.0
 - Python 3
 
-## Installation ##
-To install pycocoevalcap and the pycocotools dependency (https://github.com/cocodataset/cocoapi), run:
-```
-pip install pycocoevalcap
-```
 
 ## Usage ##
-See the example script: [example/coco_eval_example.py](example/coco_eval_example.py)
+Run the following script: [metrics_compute.py](./metrics_compute.py)
 
-## Files ##
+## Added files ##
 ./
-- eval.py: The file includes COCOEavlCap class that can be used to evaluate results on COCO.
-- tokenizer: Python wrapper of Stanford CoreNLP PTBTokenizer
-- bleu: Bleu evalutation codes
-- meteor: Meteor evaluation codes
-- rouge: Rouge-L evaluation codes
-- cider: CIDEr evaluation codes
-- spice: SPICE evaluation codes
+- metrics_compute.py : script generating the metrics computations based on the JSON files in the added folders as explained above
+- visualize_captions.ipynb : a jupyter-notebook files aiming to display some example captions from a specific JSON file 
 
-## Setup ##
-
-- SPICE requires the download of [Stanford CoreNLP 3.6.0](http://stanfordnlp.github.io/CoreNLP/index.html) code and models. This will be done automatically the first time the SPICE evaluation is performed.
-- Note: SPICE will try to create a cache of parsed sentences in ./spice/cache/. This dramatically speeds up repeated evaluations. The cache directory can be moved by setting 'CACHE_DIR' in ./spice. In the same file, caching can be turned off by removing the '-cache' argument to 'spice_cmd'.
 
 ## References ##
 
