@@ -185,37 +185,17 @@ def get_coco_evals(files_path, coco):
 
 
 if __name__=='__main__':
-    # Paths
-
+    # Path
     annotation_file = './example/captions_val2014.json'
-
-    # Get the paths of the json files with the temperatures values
-    # files_path_1ca, temp_values_1ca = get_res_files(res_files_1CA)
-    # files_path_2ca, temp_values_2ca = get_res_files(res_files_2CA)
 
     # Create the coco object
     coco = COCO(annotation_file)
     result_dic = read_result_dir('./res_files/new_CA/', coco)
 
-    # # Get the list of the correpsonding coco evals objects
-    # coco_evals_1ca = get_coco_evals(files_path_1ca, coco)
-    # coco_evals_2ca = get_coco_evals(files_path_2ca, coco)
-    #
     # Plots
-    visual_gpt = {'Bleu_1': 0.582, 'Bleu_2': None, 'Bleu_3': None, 'Bleu_4': 0.164, 'METEOR': 0.185, 'ROUGE_L': 0.419,
-                   "CIDEr": 0.451}
-    LLaMA_adapter2 = {'Bleu_1': None, 'Bleu_2': None, 'Bleu_3': None, 'Bleu_4': 0.362, 'METEOR': None, 'ROUGE_L': None,
-                   "CIDEr": 1.222}
-    ClipClap = {'Bleu_1': None, 'Bleu_2': None, 'Bleu_3': None,'Bleu_4':0.335, 'METEOR':0.274, 'ROUGE_L': None, 'CIDEr':1.13}
-    Oscar = {'Bleu_1': None, 'Bleu_2': None, 'Bleu_3': None,'Bleu_4':0.366, 'METEOR':0.304, 'ROUGE_L': None, 'CIDEr':1.241}
 
-    # single_boxplot(result_dic, 1, 1, 0.0)
-    # Compute statistics
-    df_1ca = get_stat(result_dic[1][5][0.0])
-    df_2ca = get_stat(result_dic[2][5][0.0])
-    df = pd.concat({'1 CA':df_1ca.describe().T[["mean", "std", "min", "max"]], '2 CA': df_2ca.describe().T[["mean", "std", "min", "max"]]}, axis=1)
-    print(df)
-    # #single_boxplot(result_dic, 3, 1, 0.0)
-    #multiple_boxplot(result_dic, [1, 2], 1, 0.0)
+    ClipClap = {'Bleu_1': None, 'Bleu_2': None, 'Bleu_3': None,'Bleu_4':0.335, 'METEOR':0.274, 'ROUGE_L': None, 'CIDEr':1.13}
+
     plot_results(result_dic, SOTA=ClipClap)
+
     plt.show(block=True)
